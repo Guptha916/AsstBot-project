@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+:root {
+  --background: #101519;
+  --foreground: #f4f0e9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #ff9867;
+  outline-offset: 3px;
+}
+
+/* Mode switch */
+.mode-toggle {
+  display: flex;
+  padding: 4px;
+  border: 1px solid rgba(224, 231, 235, 0.14);
+  border-radius: 11px;
+  background: rgba(35, 42, 49, 0.78);
+}
+
+.mode-toggle button {
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #9ca5ad;
+  font-size: 0.72rem;
+  transition: 180ms ease;
+}
+
+.mode-toggle button:hover {
+  color: #f4f0e9;
+}
+
+.mode-toggle .mode-active {
+  background: #df6738;
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(223, 103, 56, 0.28);
+}
+
+/* Conversation messages */
+.message-row {
+  display: flex;
+  margin-bottom: 22px;
+}
+
+.message-row-user {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  width: fit-content;
+  max-width: min(680px, 88%);
+  padding: 14px 18px;
+  border-radius: 14px;
+  white-space: pre-wrap;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.message-user {
+  border-bottom-right-radius: 4px;
+  color: #fff;
+  background: linear-gradient(135deg, #df6738, #b84b27);
+  box-shadow: 0 8px 22px rgba(184, 75, 39, 0.24);
+}
+
+.message-bot {
+  border: 1px solid rgba(224, 231, 235, 0.14);
+  border-left: 3px solid #df6738;
+  border-bottom-left-radius: 4px;
+  color: #e1e6e9;
+  background: rgba(35, 42, 49, 0.78);
+}
+
+.source-list {
+  margin-top: 12px;
+  color: #ffad81;
+  font-size: 0.7rem;
+}
+
+/* Knowledge base */
+.knowledge-panel {
+  padding: 30px 22px;
+  border-right: 1px solid rgba(224, 231, 235, 0.14);
+  background: rgba(16, 21, 25, 0.34);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.panel-heading h2 {
+  margin: 5px 0 0;
+  color: #f4f0e9;
+  font: 500 1.25rem Georgia, serif;
+}
+
+.file-count {
+  display: grid;
+  min-width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 50%;
+  background: #df6738;
+  color: #fff;
+  font-size: 0.72rem;
+}
+
+.panel-copy,
+.guardrail-note {
+  color: #9ca5ad;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #df6738;
+  border-radius: 9px;
+  background: #df6738;
+  color: #fff;
+  font-size: 0.8rem;
+  box-shadow: 0 8px 20px rgba(223, 103, 56, 0.18);
+  transition: 180ms ease;
+}
+
+.upload-button:hover:not(:disabled) {
+  background: #ed7545;
+  transform: translateY(-1px);
+}
+
+.upload-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.document-list {
+  margin-top: 24px;
+}
+
+.document-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(224, 231, 235, 0.14);
+}
+
+.document-item strong,
+.document-item span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-item strong {
+  color: #f4f0e9;
+  font-size: 0.78rem;
+}
+
+.document-item span,
+.status-text {
+  margin-top: 4px;
+  color: #9ca5ad;
+  font-size: 0.68rem;
+}
+
+.clear-button {
+  margin-top: 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffad81;
+  font-size: 0.72rem;
+}
+
+.status-text {
+  min-height: 16px;
+  margin-top: 18px;
+}
+
+.guardrail-note {
+  margin-top: 26px;
+  color: #77828c;
+  font-size: 0.68rem;
+}
+
+/* Message composer */
+.composer {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid rgba(224, 231, 235, 0.18);
+  border-radius: 12px;
+  background: rgba(35, 42, 49, 0.78);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.composer input {
+  flex: 1;
+  min-width: 0;
+  padding: 15px 16px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f4f0e9;
+}
+
+.composer input::placeholder {
+  color: #89949e;
+}
+
+.composer button {
+  width: 50px;
+  border: 0;
+  background: #df6738;
+  color: #fff;
+  font-size: 1.3rem;
+  transition: 180ms ease;
+}
+
+.composer button:hover:not(:disabled) {
+  background: #ed7545;
+}
+
+.composer button:disabled {
+  background: #48515a;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .knowledge-panel {
+    border-right: 0;
+    border-bottom: 1px solid rgba(224, 231, 235, 0.14);
+  }
+}
